@@ -66,23 +66,23 @@
     <ClCompile Include="Spikeball.cpp">
       <Filter>Fichiers sources\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Health.cpp">
-      <Filter>Fichiers sources\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Fichiers sources\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>Fichiers sources\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Movement.cpp">
-      <Filter>Fichiers sources\Component</Filter>
-    </ClCompile>
     <ClCompile Include="HealthSystem.cpp">
       <Filter>Fichiers sources\System</Filter>
     </ClCompile>
     <ClCompile Include="CollisionSystem.cpp">
       <Filter>Fichiers sources\System</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthComponent.cpp">
+      <Filter>Fichiers sources\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementComponent.cpp">
+      <Filter>Fichiers sources\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>Fichiers sources\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>Fichiers sources\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
