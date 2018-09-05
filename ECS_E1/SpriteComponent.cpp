@@ -1,12 +1,18 @@
-#include "Sprite.h"
+#include "SpriteComponent.h"
 
-
-
-Sprite::Sprite()
+SpriteComponent::SpriteComponent(sf::Shape* drawable, int zOrder)
 {
+    drawing = drawable;
+    this->zOrder = zOrder;
 }
 
-
-Sprite::~Sprite()
+SpriteComponent::~SpriteComponent()
 {
+    delete drawing;
+}
+
+void SpriteComponent::Draw(sf::RenderWindow * renderWindow, sf::Vector2f position)
+{
+    drawing->setPosition(position);
+    renderWindow->draw(*drawing);
 }

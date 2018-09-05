@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef ENTITY
+#define ENTITY
 
 class Entity
 {
@@ -14,3 +14,5 @@ protected:
 private :
     int ID;
 };
+
+#endif // !ENTITY
