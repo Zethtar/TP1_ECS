@@ -10,7 +10,6 @@ class Game
 public:
 	Game();
 	int run();
-	int testTest();
 
 private:
 	const int LARGEUR = 1280;

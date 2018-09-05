@@ -8,11 +8,6 @@ Game::Game()
 	mainWin.setVerticalSyncEnabled(true);
 }
 
-int Game::testTest()
-{
-	return 0;
-}
-
 int Game::run()
 {
 	if (!init())
