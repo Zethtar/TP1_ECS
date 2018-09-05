@@ -88,14 +88,38 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bush.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CollisionSystem.cpp" />
+    <ClCompile Include="ComponentManager.cpp" />
+    <ClCompile Include="DrawingSystem.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="HealthSystem.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Movement.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Spikeball.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bush.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="CollisionSystem.h" />
+    <ClInclude Include="ComponentManager.h" />
+    <ClInclude Include="DrawingSystem.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Health.h" />
+    <ClInclude Include="HealthSystem.h" />
+    <ClInclude Include="Movement.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Spikeball.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SystemManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
