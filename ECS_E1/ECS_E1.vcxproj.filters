@@ -113,23 +113,23 @@
     <ClInclude Include="Spikeball.h">
       <Filter>Fichiers d%27en-tête\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Health.h">
-      <Filter>Fichiers d%27en-tête\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Fichiers d%27en-tête\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>Fichiers d%27en-tête\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Movement.h">
-      <Filter>Fichiers d%27en-tête\Component</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionSystem.h">
       <Filter>Fichiers d%27en-tête\System</Filter>
     </ClInclude>
     <ClInclude Include="HealthSystem.h">
       <Filter>Fichiers d%27en-tête\System</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthComponent.h">
+      <Filter>Fichiers d%27en-tête\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Fichiers d%27en-tête\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementComponent.h">
+      <Filter>Fichiers d%27en-tête\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>Fichiers d%27en-tête\Component</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
