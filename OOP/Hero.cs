@@ -13,9 +13,21 @@ namespace OOP
         private float xPos;
         private float yPos;
 
+        private const float SPEED_SECONDS = 1;
+
         public Hero()
         {
             healthPointsCount = 10;
+
+            xPos = 0;
+            yPos = 0;
+        }
+
+        public void Move(float deltaTime)
+        {
+            xPos += SPEED_SECONDS * (deltaTime / 1000);
+
+            Console.WriteLine("Hero has moved. My new position is {0}", xPos);
         }
 
         public void Draw()

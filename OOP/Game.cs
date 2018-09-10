@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Threading;
+
 
 namespace OOP
 {
     class Game
     {
-        private static long lastTime;
-        private static long deltaTime;
+        private Stopwatch stopWatch;
+        private float deltaTime;
 
         private Hero hero;
 
@@ -19,7 +22,9 @@ namespace OOP
         {
             try
             {
-                lastTime = DateTime.Now.Millisecond;
+                stopWatch = new Stopwatch();
+                stopWatch.Start();
+                deltaTime = 0;
 
                 hero = new Hero();
 
@@ -43,19 +48,22 @@ namespace OOP
             {
                 IsOver = true;
             }
+            else if(command == "heromove")
+            {
+                
+            }
         }
 
         public void Update()
         {
-            long now = DateTime.Now.Millisecond;
-            deltaTime = now - lastTime;
-            lastTime = now;
+            deltaTime = stopWatch.ElapsedMilliseconds;
+            stopWatch.Restart();
         }
 
         //Dans ce contexte, draw affichera seulement l'état des objets dans la console
         public void Draw()
         {
-            Console.Clear();
+            Console.WriteLine("\n---------------------\n");
 
             Console.WriteLine("Delta time : {0} milliseconds", deltaTime);
             hero.Draw();
