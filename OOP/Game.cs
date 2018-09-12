@@ -11,10 +11,13 @@ namespace OOP
 {
     class Game
     {
+        private const float MAX_FRAME_RATE = 15f;
+        private const float MAX_FRAME_RATE_IN_MILLISECONDS = 1.0f / MAX_FRAME_RATE * 1000.0f;
+
         private Stopwatch stopWatch;
         private float deltaTime;
 
-        private Hero hero;
+        Character[] objects;
 
         public bool IsOver { get; private set; }
 
@@ -26,47 +29,73 @@ namespace OOP
                 stopWatch.Start();
                 deltaTime = 0;
 
-                hero = new Hero();
+                Random rnd = new Random();
+
+                objects = new Character[52];
+                for (int i = 0; i < objects.Length; i++)
+                {
+                    float xDirection = (float)rnd.Next(250, 750) / 1000;
+
+                    objects[i] = new Character(
+                        rnd.Next(Console.WindowLeft+5, Console.WindowWidth-5),
+                        rnd.Next(Console.WindowTop+5, Console.WindowHeight-5),
+                        rnd.Next(0, 2) == 1 ? xDirection : -xDirection,
+                        rnd.Next(0, 2) == 1 ? 1f - xDirection : -(1f - xDirection));
+                }
 
                 return true;
             }
             catch (Exception e) 
             {
                 Console.WriteLine(e.Message);
+                Console.Read();
                 return false;
             }
         }
 
-        //Dans ce contexte, GetInput lira la console pour savoir quoi faire
-        //On a donc seulement quelques commandes pré-déterminées
         public void GetInput()
         {
-            Console.Write("What is your command : ");
-            string command = Console.ReadLine();
-
-            if(command == "end")
-            {
-                IsOver = true;
-            }
-            else if(command == "heromove")
-            {
-                
-            }
         }
 
         public void Update()
         {
+            if(deltaTime < MAX_FRAME_RATE_IN_MILLISECONDS)
+            {
+                Thread.Sleep((int)(MAX_FRAME_RATE_IN_MILLISECONDS - deltaTime));
+            }
+
             deltaTime = stopWatch.ElapsedMilliseconds;
             stopWatch.Restart();
+
+            //Update
+            for (int i = 0; i < objects.Length; i++)
+            {
+                objects[i].Update(deltaTime);
+            }
+
+            //Collision
+            for (int i = 0; i < objects.Length; i++)
+            {
+                for (int j = 0; j < objects.Length; j++)
+                {
+                    if(i != j && objects[i].CollideWith(objects[j]))
+                    {
+                        objects[i].Collided();
+                        objects[j].Collided();
+                    }
+                }
+            }
         }
 
         //Dans ce contexte, draw affichera seulement l'état des objets dans la console
         public void Draw()
         {
-            Console.WriteLine("\n---------------------\n");
+            Console.Clear();
 
-            Console.WriteLine("Delta time : {0} milliseconds", deltaTime);
-            hero.Draw();
+            for (int i = 0; i < objects.Length; i++)
+            {
+                objects[i].Draw();
+            }
         }
     }
 }
