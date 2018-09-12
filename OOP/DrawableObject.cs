@@ -15,6 +15,12 @@ namespace OOP
             this.character = character;
         }
 
+        public DrawableObject(char character, float xPos, float yPos, float xDirection, float yDirection) :
+            base(xPos, yPos, xDirection, yDirection)
+        {
+            this.character = character;
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition((int)xPos, (int)yPos);
@@ -23,13 +29,16 @@ namespace OOP
 
         public bool CollideWith(DrawableObject other)
         {
-            return ((int)xPos == (int)other.xPos && (int)yPos == (int)other.yPos);
+            return ((int)xPos == (int)other.xPos 
+                && (int)yPos == (int)other.yPos);
         }
 
         public void Collided()
         {
             xDirection *= -1;
             yDirection *= -1;
+
+            Move(250);
         }
     }
 }

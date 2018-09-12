@@ -10,14 +10,10 @@ namespace OOP
     {
         private static char currentChar = 'a';
 
-        public Character(int xPos, int yPos, float xDirection, float yDirection) : base(currentChar)
+        public Character(int xPos, int yPos, float xDirection, float yDirection) :
+            base(currentChar, xPos, yPos, xDirection, yDirection)
         {
-            currentChar++;  
-            this.xPos = xPos;
-            this.yPos = yPos;
-
-            this.xDirection = xDirection;
-            this.yDirection = yDirection;
+            currentChar++;
         }
     }
 }

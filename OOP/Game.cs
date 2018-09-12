@@ -11,13 +11,14 @@ namespace OOP
 {
     class Game
     {
-        private const float MAX_FRAME_RATE = 15f;
+        private const float MAX_FRAME_RATE = 15f; //Frame rate par seconde
+        //Pour éviter d'avoir besoin de recalculer plusieurs fois
         private const float MAX_FRAME_RATE_IN_MILLISECONDS = 1.0f / MAX_FRAME_RATE * 1000.0f;
 
         private Stopwatch stopWatch;
         private float deltaTime;
 
-        Character[] objects;
+        Character[] characters;
 
         public bool IsOver { get; private set; }
 
@@ -31,16 +32,18 @@ namespace OOP
 
                 Random rnd = new Random();
 
-                objects = new Character[52];
-                for (int i = 0; i < objects.Length; i++)
+                characters = new Character[52];
+                for (int i = 0; i < characters.Length; i++)
                 {
                     float xDirection = (float)rnd.Next(250, 750) / 1000;
+                    float yDirection = 1f - xDirection;
 
-                    objects[i] = new Character(
-                        rnd.Next(Console.WindowLeft+5, Console.WindowWidth-5),
-                        rnd.Next(Console.WindowTop+5, Console.WindowHeight-5),
+                    characters[i] = new Character(
+                        rnd.Next(Console.WindowLeft, Console.WindowWidth),
+                        rnd.Next(Console.WindowTop, Console.WindowHeight),
                         rnd.Next(0, 2) == 1 ? xDirection : -xDirection,
-                        rnd.Next(0, 2) == 1 ? 1f - xDirection : -(1f - xDirection));
+                        rnd.Next(0, 2) == 1 ? yDirection : -yDirection
+                        );
                 }
 
                 return true;
@@ -53,12 +56,9 @@ namespace OOP
             }
         }
 
-        public void GetInput()
-        {
-        }
-
         public void Update()
         {
+            //Pour éviter de rafraichir l'écran trop souvent
             if(deltaTime < MAX_FRAME_RATE_IN_MILLISECONDS)
             {
                 Thread.Sleep((int)(MAX_FRAME_RATE_IN_MILLISECONDS - deltaTime));
@@ -68,33 +68,32 @@ namespace OOP
             stopWatch.Restart();
 
             //Update
-            for (int i = 0; i < objects.Length; i++)
+            for (int i = 0; i < characters.Length; i++)
             {
-                objects[i].Update(deltaTime);
+                characters[i].Update(deltaTime);
             }
 
             //Collision
-            for (int i = 0; i < objects.Length; i++)
+            for (int i = 0; i < characters.Length; i++)
             {
-                for (int j = 0; j < objects.Length; j++)
+                for (int j = 0; j < characters.Length; j++)
                 {
-                    if(i != j && objects[i].CollideWith(objects[j]))
+                    if(i != j && characters[i].CollideWith(characters[j]))
                     {
-                        objects[i].Collided();
-                        objects[j].Collided();
+                        characters[i].Collided();
+                        characters[j].Collided();
                     }
                 }
             }
         }
 
-        //Dans ce contexte, draw affichera seulement l'état des objets dans la console
         public void Draw()
         {
             Console.Clear();
 
-            for (int i = 0; i < objects.Length; i++)
+            for (int i = 0; i < characters.Length; i++)
             {
-                objects[i].Draw();
+                characters[i].Draw();
             }
         }
     }

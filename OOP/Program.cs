@@ -16,7 +16,6 @@ namespace OOP
             {
                 while(!game.IsOver)
                 {
-                    game.GetInput();
                     game.Update();
                     game.Draw();
                 }
