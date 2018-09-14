@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Component = ECS.Components.Component;
+using Component = ECS.Components.IComponent;
 
 namespace ECS.Systems
 {
@@ -31,7 +31,7 @@ namespace ECS.Systems
 
             foreach(Entity ent in EntitySystem.GetInstance().entities)
             {
-                PhysicsComponent physics = null;
+                PhysicsComponent physics = null; 
                 RenderComponent render = null;
 
                 for (int i = 0; i < ent.components.Count; i++)
@@ -41,13 +41,15 @@ namespace ECS.Systems
 
                     if (typeof(RenderComponent) == ent.components.ElementAt(i).GetType())
                         render = (RenderComponent)ent.components.ElementAt(i);
-                } 
+                }
 
+                //On peut dessiner un objet seulement s'il possède le component de physique et de rendu
                 if(render != null && physics != null)
                 {
                     Console.SetCursorPosition(
                         (int)physics.xPosition,
                         (int)physics.yPosition);
+
                     Console.Write(render.character);
                 }
             }

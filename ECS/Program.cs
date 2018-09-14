@@ -10,6 +10,9 @@ namespace ECS
 {
     class Program
     {
+        private const int NB_CHARACTER = 52;
+        private const float CHARACTER_SPEED = 5;
+
         private static char currentChar = 'a';
         private static Random rnd;
 
@@ -17,12 +20,12 @@ namespace ECS
         {
             rnd = new Random();
 
-            for (int i = 0; i < 52; i++)
+            for (int i = 0; i < NB_CHARACTER; i++)
             {
                 CreatePlayer();
             }
 
-            while(true)
+            while(true) //Les système pourraient être des "Threads" continues
             {
                 PhysicsSystem.GetInstance().UpdateComponents();
                 RenderSystem.GetInstance().UpdateComponents();
@@ -33,6 +36,7 @@ namespace ECS
         {
             int entityId = EntitySystem.GetInstance().CreateEntity();
 
+            //Initialisation du component de physique
             PhysicsComponent physics = new PhysicsComponent();
 
             float xDirection = (float)rnd.Next(250, 750) / 1000;
@@ -42,16 +46,18 @@ namespace ECS
             physics.yPosition = rnd.Next(Console.WindowTop, Console.WindowHeight);
             physics.xDirection = rnd.Next(0, 2) == 1 ? xDirection : -xDirection;
             physics.yDirection = rnd.Next(0, 2) == 1 ? yDirection : -yDirection;
-            physics.speed = 5;
+            physics.speed = CHARACTER_SPEED;
 
             EntitySystem.GetInstance().AddComponent(entityId, physics);
 
+            //Initialisation du component de rendu
             RenderComponent render = new RenderComponent();
 
             render.character = currentChar;
-            currentChar++;
 
             EntitySystem.GetInstance().AddComponent(entityId, render);
+
+            currentChar++;
         }
     }
 }

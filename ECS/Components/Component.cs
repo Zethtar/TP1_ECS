@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECS.Components
 {
-    class Component
+    interface IComponent
     {
     }
 }

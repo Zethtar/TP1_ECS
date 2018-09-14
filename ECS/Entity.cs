@@ -11,21 +11,21 @@ namespace ECS
     {
         public int id { get; private set; }
 
-        public List<Component> components { get; private set; }
+        public List<IComponent> components { get; private set; }
 
         public Entity(int id)
         {
             this.id = id;
 
-            components = new List<Component>();
+            components = new List<IComponent>();
         }
 
-        public void AddComponent(Component newComponent)
+        public void AddComponent(IComponent newComponent)
         { 
             components.Add(newComponent);
         }
 
-        public void RemoveComponent(Component component)
+        public void RemoveComponent(IComponent component)
         {
             components.Remove(component);
         }

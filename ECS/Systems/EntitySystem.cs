@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Component = ECS.Components.Component;
+using IComponent = ECS.Components.IComponent;
 
 namespace ECS.Systems
 {
     class EntitySystem
     {
-        public List<Entity> entities { get; private set; }
-
         private static EntitySystem instance;
+
+        private static int entitiesCount = 0;
+
+        public List<Entity> entities { get; private set; }
 
         private EntitySystem()
         {
@@ -29,9 +31,10 @@ namespace ECS.Systems
 
         public int CreateEntity()
         {
-            Entity newEntity = new Entity(entities.Count);
+            Entity newEntity = new Entity(entitiesCount);
 
             entities.Add(newEntity);
+            entitiesCount++;
 
             return newEntity.id;
         }
@@ -49,16 +52,12 @@ namespace ECS.Systems
             return null;
         }
 
-        public void AddComponent(int id, Component component)
+        public void AddComponent(int entityId, IComponent component)
         {
-            Entity entity;
-
-            foreach (Entity ent in entities)
+            foreach (Entity entity in entities)
             {
-                if (ent.id == id)
+                if (entity.id == entityId)
                 {
-                    entity = ent;
-
                     if(!entity.components.Contains(component))
                         entity.AddComponent(component);
 

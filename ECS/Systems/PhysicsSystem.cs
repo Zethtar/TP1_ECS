@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Component = ECS.Components.Component;
+using Component = ECS.Components.IComponent;
 
 namespace ECS.Systems
 {
@@ -65,6 +65,7 @@ namespace ECS.Systems
                 }
             }
 
+            //Il faut que l'entité possède un composant de physique
             if (entityPhysics != null)
             {
                 entityPhysics.Move(deltaTime);
