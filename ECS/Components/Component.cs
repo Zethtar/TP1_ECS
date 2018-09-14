@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECS.Components
 {
-    class RenderComponent : Component
+    class Component
     {
-        public char character;
     }
 }
