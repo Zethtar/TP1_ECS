@@ -26,19 +26,5 @@ namespace OOP
             Console.SetCursorPosition((int)xPos, (int)yPos);
             Console.Write(character);
         }
-
-        public bool CollideWith(DrawableObject other)
-        {
-            return ((int)xPos == (int)other.xPos 
-                && (int)yPos == (int)other.yPos);
-        }
-
-        public void Collided()
-        {
-            xDirection *= -1;
-            yDirection *= -1;
-
-            Move(250);
-        }
     }
 }

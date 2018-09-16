@@ -13,7 +13,7 @@ namespace OOP
         public Character(int xPos, int yPos, float xDirection, float yDirection) :
             base(currentChar, xPos, yPos, xDirection, yDirection)
         {
-            currentChar++;
+            currentChar++; //Pour éviter que tous les Characters aient la même lettre
         }
     }
 }

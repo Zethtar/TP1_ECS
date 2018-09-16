@@ -90,6 +90,8 @@ namespace ECS.Systems
                         }
                     }
 
+                    //Système de collision très simple
+                    //Si les deux entités ont la même position, leurs directions sont inversées 
                     if (otherEntityPhysics != null &&
                         (int)entityPhysics.xPosition == (int)otherEntityPhysics.xPosition
                         && (int)entityPhysics.yPosition == (int)otherEntityPhysics.yPosition)

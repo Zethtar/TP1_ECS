@@ -14,7 +14,7 @@ namespace OOP
 
             if(game.Init())
             {
-                while(!game.IsOver) //Loop de jeu 
+                while(!game.IsOver) //Loop de jeu
                 {
                     //game.GetInputs() //Pas nécessaire dans ce contexte
                     game.Update();

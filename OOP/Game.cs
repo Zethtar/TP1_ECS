@@ -78,6 +78,8 @@ namespace OOP
             {
                 for (int j = 0; j < characters.Length; j++)
                 {
+                    //Système de collision très simple
+                    //Si deux characters possèdent la même position, leurs directions sont inversées.
                     if(i != j && characters[i].CollideWith(characters[j]))
                     {
                         characters[i].Collided();

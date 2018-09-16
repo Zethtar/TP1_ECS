@@ -37,15 +37,20 @@ namespace ECS.Systems
                 for (int i = 0; i < ent.components.Count; i++)
                 {
                     if (typeof(PhysicsComponent) == ent.components.ElementAt(i).GetType())
+                    {
                         physics = (PhysicsComponent)ent.components.ElementAt(i);
+                    }
 
                     if (typeof(RenderComponent) == ent.components.ElementAt(i).GetType())
+                    {
                         render = (RenderComponent)ent.components.ElementAt(i);
+                    }
                 }
 
                 //On peut dessiner un objet seulement s'il possède le component de physique et de rendu
                 if(render != null && physics != null)
                 {
+                    //Afficher le caracter à la bonne position
                     Console.SetCursorPosition(
                         (int)physics.xPosition,
                         (int)physics.yPosition);
